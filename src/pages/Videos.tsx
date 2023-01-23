@@ -3,13 +3,16 @@ import React from 'react';
 import { useParams } from 'react-router';
 import Video from '../components/Video';
 import { FakeYoutube, Youtube } from '../api';
+import { useYoutubeApi } from '../contenxt/YoutubeAPIContext';
 
 const Videos = () => {
   const { keyword } = useParams();
+  const { youtube } = useYoutubeApi();
   const {
     isLoading,
     error,
     data: videos,
+    // } = useQuery(['videos', keyword], () => youtube.search(keyword || ''));
   } = useQuery(['videos', keyword], () => {
     const fakeSearch = new FakeYoutube();
     return fakeSearch.search(keyword || '');
