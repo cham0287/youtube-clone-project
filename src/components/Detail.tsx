@@ -1,7 +1,7 @@
 import React from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { Link, useParams } from 'react-router-dom';
-import uploadedTime from '../util';
+import { format } from 'timeago.js';
 
 const Detail = () => {
   const { id } = useParams();
@@ -46,7 +46,7 @@ const Detail = () => {
                 {video.snippet.channelTitle}
               </div>
               <div className='text-gray-400 text-xs'>
-                {uploadedTime(video.snippet.publishTime)}
+                {format(video.snippet.publishTime)}
               </div>
             </div>
           </div>
