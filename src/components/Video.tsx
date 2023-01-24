@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { format } from 'timeago.js';
+import { formatAgo } from '../util/date';
 
 const Video = ({ video }: any) => {
-  const { title, thumbnails, channelTitle, publishTime } = video.snippet;
+  const { title, thumbnails, channelTitle, publishedAt } = video.snippet;
   return (
     <li className='w-1/5 h-1/3 px-2'>
       <div className='w-full h-2/3 rounded-lg'>
@@ -18,7 +18,7 @@ const Video = ({ video }: any) => {
       </div>
       <p>{title}</p>
       <p className='text-gray-400'>{channelTitle}</p>
-      <p className='text-gray-400'>{format(publishTime)}</p>
+      <p className='text-gray-400'>{formatAgo(publishedAt, 'ko')}</p>
     </li>
   );
 };
