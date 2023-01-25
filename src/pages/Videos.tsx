@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import { useParams } from 'react-router';
-import Video from '../components/Video';
+import VideoCard from '../components/VideoCard';
 import { FakeYoutube, Youtube } from '../api';
 import { useYoutubeApi } from '../contenxt/YoutubeAPIContext';
 
@@ -14,19 +14,19 @@ const Videos = () => {
     data: videos,
     // } = useQuery(['videos', keyword], () => youtube.search(keyword || ''));
   } = useQuery(['videos', keyword], () => {
-    const fakeSearch = new FakeYoutube();
+    const fakeSearch = new Youtube();
     return fakeSearch.search(keyword || '');
   });
   return (
-    <div className='w-full'>
+    <div>
       <div>Search Keyword: {keyword ? keyword : 'hot trend'}</div>
-      <div className='w-full  bg-black text-white flex flex-wrap items-start justify-start'>
+      <div>
         {isLoading && <div>Loading ...</div>}
         {error && <div>Error occurred ...</div>}
         {videos && (
-          <ul className='flex flex-wrap w-full'>
+          <ul className='grid gap-2  grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5'>
             {videos.map((video: any) => (
-              <Video video={video} key={video.id.videoId} />
+              <VideoCard video={video} key={video.id.videoId} />
             ))}
           </ul>
         )}

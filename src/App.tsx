@@ -6,7 +6,7 @@ import { YoutubeAPIProvider } from './contenxt/YoutubeAPIContext';
 const queryclient = new QueryClient();
 function App() {
   return (
-    <div className='App bg-[#0f0f0f] w-full h-screen text-white'>
+    <div className='App bg-[#0f0f0f] w-full text-white'>
       <SearchNav />
       <QueryClientProvider client={queryclient}>
         <YoutubeAPIProvider>

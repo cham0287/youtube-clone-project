@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import Notfound from './pages/Notfound';
+import NotFound from './pages/NotFound';
 import Videos from './pages/Videos';
 import VideoDetail from './pages/VideoDetail';
 
@@ -11,7 +11,7 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
-    errorElement: <Notfound />,
+    // errorElement: <NotFound />,
     children: [
       { index: true, element: <Videos /> },
       { path: 'videos', element: <Videos /> },
