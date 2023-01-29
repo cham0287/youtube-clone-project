@@ -12,5 +12,15 @@ export default function ChannelInfo({ id, name }: PropTypes) {
   const { data: url } = useQuery(['channel', id], () =>
     youtubeApi.channelImgURL(id)
   );
-  return <div>{url && <img src={url} alt={name} />}</div>;
+  console.log(url);
+  return (
+    <div>
+      {url && (
+        <img
+          src={`https://yt3.ggpht.com/Yxvus5PSvCa2WXrchCax11Dg_1HWOqlsyTQKpNvibipOO4e9FIGsKbnT4Pj7DzUXO4sqjjxcQaM=s88-c-k-c0x00ffffff-no-rj`}
+          alt={name}
+        />
+      )}
+    </div>
+  );
 }
