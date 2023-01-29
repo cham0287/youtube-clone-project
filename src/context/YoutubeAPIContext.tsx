@@ -12,7 +12,7 @@ const YoutubeAPIContext = createContext<any>(null);
 
 export const YoutubeAPIProvider = ({ children }: PropTypes) => {
   return (
-    <YoutubeAPIContext.Provider value={fakeYoutube}>
+    <YoutubeAPIContext.Provider value={youtube}>
       {children}
     </YoutubeAPIContext.Provider>
   );
