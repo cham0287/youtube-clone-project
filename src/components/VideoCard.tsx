@@ -14,7 +14,6 @@ const VideoCard = ({ video }: any) => {
           id={video.id.videoId}
         />
       </Link>
-
       <p className='font-semibold line-clamp-2'>{title}</p>
       <p className='opacity-60 text-sm'>{channelTitle}</p>
       <p className='opacity-60 text-sm'>{formatAgo(publishedAt, 'ko')}</p>

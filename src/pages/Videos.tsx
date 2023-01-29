@@ -7,7 +7,6 @@ import { useYoutubeApi } from '../context/YoutubeAPIContext';
 const Videos = () => {
   const { keyword } = useParams();
   const youtubeApi = useYoutubeApi();
-  console.log(youtubeApi);
   const {
     isLoading,
     error,

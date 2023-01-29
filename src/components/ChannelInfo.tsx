@@ -1,6 +1,6 @@
 import React from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { FakeYoutube, Youtube } from '../api';
+import { useYoutubeApi } from '../context/YoutubeAPIContext';
 
 interface PropTypes {
   id: string;
@@ -8,15 +8,9 @@ interface PropTypes {
 }
 
 export default function ChannelInfo({ id, name }: PropTypes) {
-  const youtubeApi = new Youtube();
+  const youtubeApi = useYoutubeApi();
   const { data: url } = useQuery(['channel', id], () =>
     youtubeApi.channelImgURL(id)
   );
-  return (
-    <div>
-      hello
-      {url && <img src={url} alt={name} />}
-      <p>{name}</p>
-    </div>
-  );
+  return <div>{url && <img src={url} alt={name} />}</div>;
 }
