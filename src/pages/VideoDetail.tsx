@@ -3,6 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { format } from 'timeago.js';
 import RelatedVideos from '../components/RelatedVideos';
+import ChannelInfo from '../components/ChannelInfo';
 
 const VideoDetail = () => {
   const video = useLocation().state.video;
@@ -32,6 +33,7 @@ const VideoDetail = () => {
             src={`http://www.youtube.com/embed/${video.id}`}
           ></iframe>
         </section>
+        <ChannelInfo id={video.id} name={video.channelTitle} />
         <div className='text-xl font-semibold'>{video.snippet.title}</div>
         <div>{video.snippet.channelTitle}</div>
         <div className='line-clamp-3'>{video.snippet.description}</div>

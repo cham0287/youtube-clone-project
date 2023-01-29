@@ -17,16 +17,19 @@ const SearchNav = () => {
   }, [keyword]);
 
   return (
-    <div className='flex h-[10vh] items-center text-white'>
+    <header className='flex p-4 items-center text-white'>
       <Link to='/' className='flex'>
-        <div className='text-3xl text-red-600 mx-2'>
+        <div className='text-4xl text-[#FF0000] mx-2'>
           <BsYoutube />
         </div>
-        <div className='text-2xl font-semibold'>Youtube</div>
+        <div className='text-3xl font-bold'>Youtube</div>
       </Link>
-      <form className='w-2/5 ml-[20%] h-1/2 flex' onSubmit={handleSearchSubmit}>
+      <form
+        className='w-full flex justify-center'
+        onSubmit={handleSearchSubmit}
+      >
         <input
-          className='rounded-r rounded-full w-full h-full pl-2 border-[#303030] border-[1px] bg-[#0f0f0f] outline-none text-white'
+          className='rounded-r rounded-full w-7/12 p-2 text-md border-[#303030] border-[1px] bg-[#0f0f0f] outline-none text-white'
           placeholder='Search..'
           type='text'
           value={searchInput}
@@ -35,12 +38,12 @@ const SearchNav = () => {
         <button
           onClick={handleSearchSubmit}
           type='submit'
-          className='bg-[#222222]  border-[#303030] border-[1px] rounded-l rounded-full  h-full w-[65px] text-2xl flex justify-center items-center'
+          className='bg-zinc-600 border-[#303030] text-3xl  border-[1px] rounded-l rounded-full w-[65px] flex justify-center items-center'
         >
           <AiOutlineSearch />
         </button>
       </form>
-    </div>
+    </header>
   );
 };
 

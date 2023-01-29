@@ -2,21 +2,17 @@ import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import { useParams } from 'react-router';
 import VideoCard from '../components/VideoCard';
-import { FakeYoutube, Youtube } from '../api';
-import { useYoutubeApi } from '../contenxt/YoutubeAPIContext';
+import { useYoutubeApi } from '../context/YoutubeAPIContext';
 
 const Videos = () => {
   const { keyword } = useParams();
-  const { youtube } = useYoutubeApi();
+  const youtubeApi = useYoutubeApi();
+  console.log(youtubeApi);
   const {
     isLoading,
     error,
     data: videos,
-    // } = useQuery(['videos', keyword], () => youtube.search(keyword || ''));
-  } = useQuery(['videos', keyword], () => {
-    const fakeSearch = new Youtube();
-    return fakeSearch.search(keyword || '');
-  });
+  } = useQuery(['videos', keyword], () => youtubeApi.search(keyword || ''));
   return (
     <div>
       <div>Search Keyword: {keyword ? keyword : 'hot trend'}</div>

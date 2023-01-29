@@ -12,9 +12,9 @@ export const fakeSearch = async (keyword: string | undefined) => {
 export class FakeYoutube {
   constructor() {}
   async search(keyword: string) {
-    return keyword ? this.#searchByKeyword(keyword) : this.#mostPopular();
+    return keyword ? this.#searchByKeyword() : this.#mostPopular();
   }
-  async #searchByKeyword(keyword: string) {
+  async #searchByKeyword() {
     return axios
       .get(`/videos/search.json`)
       .then((res) => res.data.items)
@@ -38,6 +38,13 @@ export class Youtube {
   async search(keyword: string) {
     return keyword ? this.#searchByKeyword(keyword) : this.#mostPopular();
   }
+
+  async channelImgURL(id: string) {
+    return this.httpClient
+      .channels({ params: { part: 'snippet', id } })
+      .then((res: any) => res.data.items[0].snippet.thumbnails.default);
+  }
+
   async #searchByKeyword(keyword: string) {
     return this.httpClient
       .get('search', {

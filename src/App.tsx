@@ -2,17 +2,19 @@ import React from 'react';
 import SearchNav from './components/SearchNav';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 import { Outlet } from 'react-router';
-import { YoutubeAPIProvider } from './contenxt/YoutubeAPIContext';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import { YoutubeAPIProvider } from './context/YoutubeAPIContext';
 const queryclient = new QueryClient();
 function App() {
   return (
-    <div className='App bg-[#0f0f0f] w-full text-white'>
+    <div className='App w-full'>
       <SearchNav />
-      <QueryClientProvider client={queryclient}>
-        <YoutubeAPIProvider>
+      <YoutubeAPIProvider>
+        <QueryClientProvider client={queryclient}>
           <Outlet />
-        </YoutubeAPIProvider>
-      </QueryClientProvider>
+          <ReactQueryDevtools initialIsOpen={true} />
+        </QueryClientProvider>
+      </YoutubeAPIProvider>
     </div>
   );
 }
