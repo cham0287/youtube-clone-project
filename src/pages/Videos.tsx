@@ -11,7 +11,9 @@ const Videos = () => {
     isLoading,
     error,
     data: videos,
-  } = useQuery(['videos', keyword], () => youtubeApi.search(keyword || ''));
+  } = useQuery(['videos', keyword], () => youtubeApi.search(keyword || ''), {
+    staleTime: 1000 * 5,
+  });
   return (
     <div>
       <div>Search Keyword: {keyword ? keyword : 'hot trend'}</div>

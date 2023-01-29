@@ -30,7 +30,7 @@ export class FakeYoutube {
       .then((res: any) => res.data.items[0].snippet.thumbnails.default.url);
   }
   async relatedVideos() {
-    return axios.get(`/videos/related.json`);
+    return axios.get(`/videos/related.json`).then((res) => res.data.items);
   }
 }
 export class Youtube {
@@ -82,13 +82,15 @@ export class Youtube {
       .then((res: any) => res.data.items[0].snippet.thumbnails.default.url);
   }
   async relatedVideos(id: string) {
-    return this.httpClient.get('search', {
-      params: {
-        part: 'snippet',
-        relatedToVideoId: id,
-        type: 'video',
-        maxResults: 25,
-      },
-    });
+    return this.httpClient
+      .get('search', {
+        params: {
+          part: 'snippet',
+          relatedToVideoId: id,
+          type: 'video',
+          maxResults: 25,
+        },
+      })
+      .then((res: any) => res.data.items);
   }
 }

@@ -7,8 +7,8 @@ const VideoDetail = () => {
   const video = useLocation().state.video;
   const { title, description, channelId, channelTitle } = video.snippet;
   return (
-    <div className='flex px-[2%] text-white'>
-      <article className='w-[70%]'>
+    <div className='flex flex-col lg:flex-row  px-[2%] text-white'>
+      <article className='basis-2/3'>
         <section>
           <iframe
             className='w-full h-[640px]'
@@ -17,12 +17,13 @@ const VideoDetail = () => {
             src={`http://www.youtube.com/embed/${video.id}`}
           ></iframe>
         </section>
-        <ChannelInfo id={channelId} name={channelTitle} />
-        <div className='text-xl font-semibold'>{title}</div>
-        <div>{channelTitle}</div>
-        <div className='line-clamp-3'>{description}</div>
+        <div className='p-1'>
+          <h2 className='text-xl font-bold'>{title}</h2>
+          <ChannelInfo id={channelId} name={channelTitle} />
+          <div className='line-clamp-3'>{description}</div>
+        </div>
       </article>
-      <section className='w-[30%] flex flex-col'>
+      <section className='flex flex-col basis-1/3'>
         <RelatedVideos id={video.id} />
       </section>
     </div>
